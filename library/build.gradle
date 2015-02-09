@@ -25,7 +25,8 @@ android {
 }
 
 version '1'
-group 'io.chub.android.contacts'
+group 'com.guillaumedelente.android.contacts'
+archivesBaseName = "contact-picker"
 
 android.libraryVariants
 

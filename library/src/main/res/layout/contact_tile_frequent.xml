@@ -15,7 +15,7 @@
 -->
 <view
     xmlns:android="http://schemas.android.com/apk/res/android"
-    class="io.chub.android.contacts.common.list.ContactTileFrequentView"
+    class="com.guillaumedelente.android.contacts.common.list.ContactTileFrequentView"
     android:focusable="true"
     android:background="?android:attr/selectableItemBackground">
 
@@ -27,7 +27,7 @@
         android:paddingTop="?list_item_padding_top"
         android:paddingBottom="?list_item_padding_bottom">
 
-        <io.chub.android.contacts.common.widget.LayoutSuppressingImageView
+        <com.guillaumedelente.android.contacts.common.widget.LayoutSuppressingImageView
             android:id="@+id/contact_tile_image"
             android:layout_width="60dp"
             android:layout_height="60dp"

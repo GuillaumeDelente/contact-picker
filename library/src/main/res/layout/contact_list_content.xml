@@ -59,10 +59,10 @@
     </FrameLayout>
 
     <Button
-        android:id="@+id/send_chub"
+        android:id="@+id/pick_contacts_button"
         android:layout_height="64dp"
         android:layout_width="match_parent"
-        android:text="@string/send_chub"
+        android:text="@string/contactpicker_pick_contacts"
         android:gravity="right|center_vertical"
         android:paddingRight="24dp"
         android:textColor="@color/actionbar_background_color_dark"

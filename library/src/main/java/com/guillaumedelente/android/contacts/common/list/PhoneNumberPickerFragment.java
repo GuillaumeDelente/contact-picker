@@ -63,7 +63,7 @@ public class PhoneNumberPickerFragment extends ContactEntryListFragment<ContactE
 
     private boolean mUseCallableUri;
 
-    private Button mSendChubButton;
+    private Button mPickContactsButton;
 
     private ContactListItemView.PhotoPosition mPhotoPosition =
             ContactListItemView.getDefaultPhotoPosition(false /* normal/non opposite */);
@@ -121,8 +121,8 @@ public class PhoneNumberPickerFragment extends ContactEntryListFragment<ContactE
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mSendChubButton = (Button) view.findViewById(R.id.send_chub);
-        mSendChubButton.setOnClickListener(new OnClickListener() {
+        mPickContactsButton = (Button) view.findViewById(R.id.pick_contacts_button);
+        mPickContactsButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 mListener.onPickPhoneNumberAction(((PhoneNumberListAdapter) getAdapter()).getSelectedPhoneNumbers());

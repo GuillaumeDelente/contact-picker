@@ -48,7 +48,7 @@
     <string name="messageShortcutActivityTitle">Choose a number to message</string>
 
     <!-- Activity title when the user is selecting a contact.  [CHAR LIMIT=128] -->
-    <string name="contactPickerActivityTitle">Choose a contact</string>
+    <string name="contactPickerActivityTitle">Choose contacts</string>
 
     <!-- Entry that prompts user to select a newly created contact.  [CHAR LIMIT=30] -->
     <string name="header_entry_contact_list_adapter_header_title">Create new contact</string>
@@ -1429,5 +1429,5 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
          contacts to be displayed. [CHAR LIMIT=128] -->
     <string name="settings_contact_display_options_title">Contact display options</string>
     <string name="could_not_select_contact">Could not select contact. Please retry.</string>
-    <string name="send_chub">Fuck yeah</string>
+    <string name="contactpicker_pick_contacts">pick contacts</string>
 </resources>

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Contact-picker</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="pick_contacts">Pick Contacts</string>
+    <string name="action_settings">Settings</string>
 </resources>

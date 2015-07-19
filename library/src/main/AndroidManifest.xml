@@ -19,13 +19,14 @@
 
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <activity android:name=".activities.ContactSelectionActivity"
-              android:label="@string/launcherActivityLabel"
-              android:theme="@style/ContactPickerTheme"
-              android:launchMode="singleTop"
-              android:clearTaskOnLaunch="true"
-              android:uiOptions="splitActionBarWhenNarrow"
-              android:windowSoftInputMode="adjustResize">
+        android:label="@string/launcherActivityLabel"
+        android:theme="@style/ContactPickerTheme"
+        android:launchMode="singleTop"
+        android:clearTaskOnLaunch="true"
+        android:uiOptions="splitActionBarWhenNarrow"
+        android:windowSoftInputMode="adjustResize">
     </activity>
     <application/>
 

@@ -33,18 +33,18 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.guillaumedelente.android.contacts.R;
+import com.guillaumedelente.android.contacts.common.ContactPhotoManager.DefaultImageRequest;
+import com.guillaumedelente.android.contacts.common.GeoUtil;
+import com.guillaumedelente.android.contacts.common.extensions.ExtendedPhoneDirectoriesManager;
+import com.guillaumedelente.android.contacts.common.extensions.ExtensionsFactory;
+import com.guillaumedelente.android.contacts.common.preference.ContactsPreferences;
+import com.guillaumedelente.android.contacts.common.util.Constants;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import com.guillaumedelente.android.contacts.common.GeoUtil;
-import com.guillaumedelente.android.contacts.common.extensions.ExtendedPhoneDirectoriesManager;
-import com.guillaumedelente.android.contacts.common.extensions.ExtensionsFactory;
-import com.guillaumedelente.android.contacts.common.util.Constants;
-import com.guillaumedelente.android.contacts.common.ContactPhotoManager.DefaultImageRequest;
-import com.guillaumedelente.android.contacts.R;
-import com.guillaumedelente.android.contacts.common.preference.ContactsPreferences;
 
 /**
  * A cursor adapter for the {@link Phone#CONTENT_ITEM_TYPE} and
@@ -112,7 +112,7 @@ public class PhoneNumberListAdapter extends ContactEntryListAdapter {
 
     private boolean mUseCallableUri;
 
-    private Map<Long, String> mSelectedContacts;
+    private Map<Long, ContactHolder> mSelectedContacts;
 
     public PhoneNumberListAdapter(Context context) {
         super(context);
@@ -143,13 +143,15 @@ public class PhoneNumberListAdapter extends ContactEntryListAdapter {
         if (mSelectedContacts.containsKey(selectedContactId)) {
             mSelectedContacts.remove(selectedContactId);
         } else {
-            String phoneNumber = cursor.getString(PhoneQuery.PHONE_NUMBER);
-            mSelectedContacts.put(selectedContactId, phoneNumber);
+            ContactHolder contact = new ContactHolder(
+                    cursor.getString(PhoneQuery.DISPLAY_NAME),
+                    cursor.getString(PhoneQuery.PHONE_NUMBER));
+                    mSelectedContacts.put(selectedContactId, contact);
         }
         notifyDataSetChanged();
     }
 
-    public ArrayList<String> getSelectedPhoneNumbers() {
+    public ArrayList<ContactHolder> getSelectedContacts() {
         return new ArrayList<>(mSelectedContacts.values());
     }
 
@@ -564,5 +566,32 @@ public class PhoneNumberListAdapter extends ContactEntryListAdapter {
                         String.valueOf(directoryId))
                 .encodedFragment(cursor.getString(lookUpKeyColumn))
                 .build();
+    }
+
+    public class ContactHolder {
+
+        private String name;
+        private String number;
+
+        public ContactHolder(String name, String number) {
+            this.name = name;
+            this.number = number;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getNumber() {
+            return number;
+        }
+
+        public void setNumber(String number) {
+            this.number = number;
+        }
     }
 }

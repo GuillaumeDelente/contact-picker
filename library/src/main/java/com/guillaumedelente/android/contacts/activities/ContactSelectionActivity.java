@@ -40,10 +40,12 @@ import android.widget.SearchView.OnCloseListener;
 import android.widget.SearchView.OnQueryTextListener;
 import android.widget.Toast;
 
+import com.google.common.collect.Sets;
 import com.guillaumedelente.android.contacts.ContactsActivity;
 import com.guillaumedelente.android.contacts.R;
 import com.guillaumedelente.android.contacts.common.list.ContactEntryListFragment;
 import com.guillaumedelente.android.contacts.common.list.OnPhoneNumberPickerActionListener;
+import com.guillaumedelente.android.contacts.common.list.PhoneNumberListAdapter;
 import com.guillaumedelente.android.contacts.common.list.PhoneNumberPickerFragment;
 import com.guillaumedelente.android.contacts.list.ContactPickerFragment;
 import com.guillaumedelente.android.contacts.list.ContactsRequest;
@@ -53,9 +55,9 @@ import com.guillaumedelente.android.contacts.list.OnContactPickerActionListener;
 import com.guillaumedelente.android.contacts.list.OnEmailAddressPickerActionListener;
 import com.guillaumedelente.android.contacts.list.OnPostalAddressPickerActionListener;
 import com.guillaumedelente.android.contacts.list.PostalAddressPickerFragment;
-import com.google.common.collect.Sets;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -72,6 +74,8 @@ public class ContactSelectionActivity extends ContactsActivity
     private static final String KEY_ACTION_CODE = "actionCode";
     private static final String KEY_SEARCH_MODE = "searchMode";
     private static final int DEFAULT_DIRECTORY_RESULT_LIMIT = 20;
+    public static final String KEY_RESULT_NUMBERS = "numbers";
+    public static final String KEY_RESULT_NAMES = "names";
 
     protected ContactEntryListFragment<?> mListFragment;
 
@@ -384,7 +388,7 @@ public class ContactSelectionActivity extends ContactsActivity
     private final class PhoneNumberPickerActionListener implements
             OnPhoneNumberPickerActionListener {
         @Override
-        public void onPickPhoneNumberAction(ArrayList<String> results) {
+        public void onPickPhoneNumberAction(ArrayList<PhoneNumberListAdapter.ContactHolder> results) {
             returnPickerResults(results);
         }
 
@@ -492,9 +496,16 @@ public class ContactSelectionActivity extends ContactsActivity
         }
     }
 
-    public void returnPickerResults(ArrayList<String> results) {
+    public void returnPickerResults(ArrayList<PhoneNumberListAdapter.ContactHolder> results) {
+        final ArrayList<String> numbers = new ArrayList<>(results.size());
+        final ArrayList<String> names = new ArrayList<>(results.size());
+        for (PhoneNumberListAdapter.ContactHolder contact : results) {
+            numbers.add(contact.getNumber());
+            names.add(contact.getName());
+        }
         Intent intent = new Intent();
-        intent.putStringArrayListExtra("results", results);
+        intent.putStringArrayListExtra(KEY_RESULT_NUMBERS, numbers);
+        intent.putStringArrayListExtra(KEY_RESULT_NAMES, names);
         returnPickerResult(intent);
     }
 

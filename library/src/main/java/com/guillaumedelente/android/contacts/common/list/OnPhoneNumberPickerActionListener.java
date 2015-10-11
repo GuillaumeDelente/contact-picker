@@ -28,7 +28,7 @@ public interface OnPhoneNumberPickerActionListener  {
     /**
      * Returns the selected phone number to the requester.
      */
-    void onPickPhoneNumberAction(ArrayList<String> results);
+    void onPickPhoneNumberAction(ArrayList<PhoneNumberListAdapter.ContactHolder> results);
 
     /**
      * Calls the specified phone number audio call.

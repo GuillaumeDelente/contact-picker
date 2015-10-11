@@ -125,7 +125,7 @@ public class PhoneNumberPickerFragment extends ContactEntryListFragment<ContactE
         mPickContactsButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                mListener.onPickPhoneNumberAction(((PhoneNumberListAdapter) getAdapter()).getSelectedPhoneNumbers());
+                mListener.onPickPhoneNumberAction(((PhoneNumberListAdapter) getAdapter()).getSelectedContacts());
             }
         });
     }
